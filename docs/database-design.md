@@ -2,31 +2,27 @@
 
 ## earthquakes
 
-{
-  _id,
-  magnitude,
-  location,
-  latitude,
-  longitude,
-  depth,
-  date,
-  country,
-  continent,
-  tsunami,
-  alert,
-  significance
-}
+- earthquakeId
+- magnitude
+- date
+- latitude
+- longitude
+- location
+- country
+- continent
+- depth
+- tsunami
+- alert
+- significance
 
 Indexes:
-- text index on location/country
-- 2dsphere index on location
+- text index on location
+- 2dsphere index on coordinates
 
 ## comments
 
-{
-  _id,
-  earthquakeId,
-  username,
-  comment,
-  createdAt
-}
+- commentId
+- earthquakeId
+- username
+- comment
+- createdAt

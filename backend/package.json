@@ -1,0 +1,9 @@
+{
+  "name": "earthquake-explorer",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^5.0.0",
+    "mongodb": "^6.0.0"
+  }
+}

@@ -54,7 +54,19 @@ async function startServer() {
 
   	  res.json(results);
 	});
+	app.get("/api/magnitude/:value", async (req, res) => {
+    const value = parseFloat(req.params.value);
 
+    const results = await db
+        .collection("earthquakes")
+        .find({
+            magnitude: { $gte: value }
+        })
+        .limit(20)
+        .toArray();
+
+    res.json(results);
+	});
     const PORT = process.env.PORT || 3001;
 
     app.listen(PORT, () => {

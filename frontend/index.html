@@ -4,10 +4,18 @@
     <title>Earthquake Explorer</title>
 </head>
 <body>
-    <h1>Earthquake Explorer</h1>
 
-    <input type="text" placeholder="Search location">
+<h1>Earthquake Explorer</h1>
 
-    <button>Search</button>
+<input id="searchBox" type="text" placeholder="Search earthquakes">
+<button onclick="search()">Search</button>
+
+<script>
+function search() {
+    const q = document.getElementById("searchBox").value;
+    window.location.href = "results.html?q=" + encodeURIComponent(q);
+}
+</script>
+
 </body>
 </html>

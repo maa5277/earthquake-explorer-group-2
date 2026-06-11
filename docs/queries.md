@@ -29,3 +29,16 @@ db.earthquakes.find({
 db.earthquakes.find()
 .sort({ significance: -1 })
 .limit(10)
+# Search Queries
+
+Keyword Search:
+- Alaska
+- California
+- Japan
+
+Magnitude Search:
+- Magnitude >= 5
+- Magnitude >= 7
+
+Geospatial Search:
+- Earthquakes within a radius of a location

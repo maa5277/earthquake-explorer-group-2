@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Results</title>
+    <title>Results</title>
 </head>
 <body>
-    <h1>Earthquake Results</h1>
 
-    <div>
-        Example Earthquake Result
-    </div>
+<h1>Search Results</h1>
+
+<div id="results"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const q = params.get("q");
+
+fetch("http://YOUR_VM_IP:3001/api/search?q=" + q)
+.then(response => response.json())
+.then(data => {
+
+    let html = "";
+
+    data.forEach(eq => {
+
+        html += `
+        <div>
+            <a href="details.html?id=${eq._id}">
+                ${eq.place || "Unknown Location"}
+            </a>
+        </div>
+        `;
+    });
+
+    document.getElementById("results").innerHTML = html;
+});
+</script>
+
 </body>
 </html>

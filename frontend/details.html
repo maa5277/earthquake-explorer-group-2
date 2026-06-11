@@ -78,7 +78,27 @@ fetch("http://172.16.1.111:3001/api/earthquake/" + id)
     });
 
     alert("Comment added");
+    loadComments();
 }
+
+    async function loadComments() {
+
+    const response = await fetch(
+        "http://172.16.1.111:3001/api/comments/" + earthquakeId
+    );
+
+    const comments = await response.json();
+
+    let html = "";
+
+    comments.forEach(c => {
+        html += `<p><b>${c.username}</b>: ${c.comment}</p>`;
+    });
+
+    document.getElementById("comments").innerHTML = html;
+}
+
+loadComments();
 
 </script>
 

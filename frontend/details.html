@@ -4,15 +4,32 @@
     <title>Earthquake Details</title>
 </head>
 <body>
-    <h1>Earthquake Details</h1>
 
-    <p>Magnitude:</p>
-    <p>Location:</p>
-    <p>Date:</p>
+<h1>Earthquake Details</h1>
 
-    <h2>Comments</h2>
+<div id="details"></div>
 
-    <textarea></textarea>
-    <button>Add Comment</button>
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+fetch("http://172.16.1.111:3001/api/earthquake/" + id)
+.then(response => response.json())
+.then(eq => {
+
+    document.getElementById("details").innerHTML = `
+        <p><strong>Location:</strong> ${eq.place}</p>
+        <p><strong>State:</strong> ${eq.state}</p>
+        <p><strong>Magnitude:</strong> ${eq.magnitudo}</p>
+        <p><strong>Depth:</strong> ${eq.depth}</p>
+        <p><strong>Date:</strong> ${eq.date}</p>
+        <p><strong>Status:</strong> ${eq.status}</p>
+        <p><strong>Tsunami:</strong> ${eq.tsunami}</p>
+    `;
+});
+
+</script>
+
 </body>
 </html>

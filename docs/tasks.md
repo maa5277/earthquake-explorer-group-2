@@ -1,19 +1,19 @@
 # Remaining Tasks
 
 ## Mohamed
-- Database design
-- Search queries
-- Geospatial queries
-- Comments system
-- Project documentation
+- Search page
+- Results page
+- Details page
+- Create indexes
 
 ## Max
-- Dataset import
-- VM setup
-- MongoDB loading
-- Dataset verification
+- Connect Node.js to MongoDB
+- Create search endpoint
+- Create earthquake details endpoint
+- Create comments endpoint
+
 
 ## Both
-- Frontend
 - Testing
 - Presentation
+- Screenshots

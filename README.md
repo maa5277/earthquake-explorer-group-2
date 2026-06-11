@@ -60,4 +60,11 @@ Magnitude:
 Earthquake search interface
 MongoDB backend API
 Document detail view
-Geospatial functionality (in progress)
+Geospatial functionality 
+# Volume
+
+earthquakes collection:
+3,445,751 documents
+
+comments collection:
+0 documents

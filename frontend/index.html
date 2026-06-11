@@ -28,11 +28,28 @@
 
 <input id="searchBox" type="text" placeholder="Search earthquakes">
 <button onclick="search()">Search</button>
+<br><br>
+
+<input id="lat" placeholder="Latitude">
+<input id="lng" placeholder="Longitude">
+
+<button onclick="nearby()">
+Nearby Search
+</button>
 
 <script>
 function search() {
     const q = document.getElementById("searchBox").value;
     window.location.href = "results.html?q=" + encodeURIComponent(q);
+}
+
+function nearby() {
+
+    const lat = document.getElementById("lat").value;
+    const lng = document.getElementById("lng").value;
+
+    window.location.href =
+        "results.html?lat=" + lat + "&lng=" + lng;
 }
 </script>
 

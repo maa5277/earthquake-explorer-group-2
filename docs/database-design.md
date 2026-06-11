@@ -1,28 +1,39 @@
-# Database Design
+# Earthquake Database Design
 
-## earthquakes
+## Collection: earthquakes
 
-- earthquakeId
-- magnitude
-- date
-- latitude
-- longitude
-- location
-- country
-- continent
-- depth
-- tsunami
-- alert
-- significance
+{
+  _id,
+  time,
+  place,
+  status,
+  tsunami,
+  significance,
+  data_type,
+  magnitude,
+  state,
+  longitude,
+  latitude,
+  depth,
+  date
+}
 
-Indexes:
-- text index on location
-- 2dsphere index on coordinates
+## Planned Indexes
 
-## comments
+### Text Search
+place
+state
 
-- commentId
-- earthquakeId
-- username
-- comment
-- createdAt
+### Geospatial Search
+latitude
+longitude
+
+## Collection: comments
+
+{
+  _id,
+  earthquakeId,
+  username,
+  comment,
+  createdAt
+}

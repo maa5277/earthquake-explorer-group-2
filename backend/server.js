@@ -38,6 +38,23 @@ async function startServer() {
         res.json(docs);
     });
 
+	app.get("/api/search", async (req, res) => {
+    const q = req.query.q || "";
+
+    const results = await db
+        .collection("earthquakes")
+        .find({
+            place: {
+                $regex: q,
+                $options: "i"
+            }
+        })
+        .limit(20)
+        .toArray();
+
+  	  res.json(results);
+	});
+
     const PORT = process.env.PORT || 3001;
 
     app.listen(PORT, () => {

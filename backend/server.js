@@ -99,6 +99,30 @@ async function startServer() {
 
     res.json(results);
 	});
+
+	app.get("/api/nearby", async (req, res) => {
+
+    const lng = parseFloat(req.query.lng);
+    const lat = parseFloat(req.query.lat);
+
+    const docs = await db.collection("earthquakes")
+        .find({
+            location: {
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [lng, lat]
+                    },
+                    $maxDistance: 100000
+                }
+            }
+        })
+        .limit(20)
+        .toArray();
+
+    res.json(docs);
+});
+	
     const PORT = process.env.PORT || 3001;
 
     app.listen(PORT, () => {

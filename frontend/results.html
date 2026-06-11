@@ -37,9 +37,27 @@ Search Again
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const q = params.get("q");
 
-fetch("http://172.16.1.111:3001/api/search?q=" + q)
+const q = params.get("q");
+const lat = params.get("lat");
+const lng = params.get("lng");
+
+let url;
+
+if (lat && lng) {
+    url =
+    "http://172.16.1.111:3001/api/nearby?lat=" +
+    lat +
+    "&lng=" +
+    lng;
+}
+else {
+    url =
+    "http://172.16.1.111:3001/api/search?q=" +
+    q;
+}
+
+fetch(url)
 .then(response => response.json())
 .then(data => {
 

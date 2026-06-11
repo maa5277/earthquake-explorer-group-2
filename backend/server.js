@@ -37,7 +37,17 @@ async function startServer() {
 
         res.json(docs);
     });
+	app.get("/api/earthquake/:id", async (req, res) => {
 
+    const { ObjectId } = require("mongodb");
+
+    const doc = await db.collection("earthquakes").findOne({
+        _id: new ObjectId(req.params.id)
+    });
+
+    res.json(doc);
+
+	});
 	app.get("/api/search", async (req, res) => {
     const q = req.query.q || "";
 

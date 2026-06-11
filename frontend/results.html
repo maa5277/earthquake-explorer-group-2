@@ -13,7 +13,7 @@
 const params = new URLSearchParams(window.location.search);
 const q = params.get("q");
 
-fetch("http://YOUR_VM_IP:3001/api/search?q=" + q)
+fetch("http://172.16.1.111:3001/api/search?q=" + q)
 .then(response => response.json())
 .then(data => {
 

@@ -48,6 +48,27 @@ async function startServer() {
     res.json(doc);
 
 	});
+
+	app.post("/api/comments", async (req, res) => {
+    const result = await db.collection("comments").insertOne({
+        earthquakeId: req.body.earthquakeId,
+        username: req.body.username,
+        comment: req.body.comment,
+        createdAt: new Date()
+    });
+
+    res.json(result);
+	});
+
+	app.get("/api/comments/:id", async (req, res) => {
+    const comments = await db
+        .collection("comments")
+        .find({ earthquakeId: req.params.id })
+        .toArray();
+
+    res.json(comments);
+	});
+	
 	app.get("/api/search", async (req, res) => {
     const q = req.query.q || "";
 
@@ -64,6 +85,7 @@ async function startServer() {
 
   	  res.json(results);
 	});
+	
 	app.get("/api/magnitude/:value", async (req, res) => {
     const value = parseFloat(req.params.value);
 
